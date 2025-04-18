@@ -42,67 +42,146 @@ class ProductAnalyzer:
         time.sleep(1)
         
         # Generate sample data based on the category
-        if "laptop" in category.lower() or "gaming" in category.lower():
+        category_lower = category.lower()
+        
+        # Check for specific product categories
+        if "laptop" in category_lower or "gaming" in category_lower:
             return self._get_laptop_data(min_price, max_price)
-        elif "earbuds" in category.lower() or "headphone" in category.lower():
+        elif "earbuds" in category_lower or "headphone" in category_lower or "earphone" in category_lower:
             return self._get_earbuds_data(min_price, max_price)
-        elif "smartwatch" in category.lower() or "watch" in category.lower():
+        elif "smartwatch" in category_lower or "watch" in category_lower:
             return self._get_smartwatch_data(min_price, max_price)
+        elif "smartphone" in category_lower or "phone" in category_lower or "mobile" in category_lower:
+            return self._get_smartphone_data(min_price, max_price)
+        elif "tv" in category_lower or "television" in category_lower:
+            return self._get_tv_data(min_price, max_price)
+        elif "refrigerator" in category_lower or "fridge" in category_lower:
+            return self._get_refrigerator_data(min_price, max_price)
+        elif "washing" in category_lower or "washer" in category_lower:
+            return self._get_washing_machine_data(min_price, max_price)
+        elif "camera" in category_lower or "dslr" in category_lower:
+            return self._get_camera_data(min_price, max_price)
+        elif "tablet" in category_lower or "ipad" in category_lower:
+            return self._get_tablet_data(min_price, max_price)
+        elif "printer" in category_lower:
+            return self._get_printer_data(min_price, max_price)
         else:
             return self._get_generic_data(category, min_price, max_price)
     
     def _get_laptop_data(self, min_price, max_price):
         laptops = [
             {
-                "name": "ASUS TUF Gaming F15",
-                "price": 54990,
-                "features": ["Intel Core i5-11400H", "NVIDIA RTX 3050 4GB", "16GB RAM", "512GB SSD", "15.6\" FHD 144Hz"],
-                "rating": 4.5,
+                "name": "ASUS ROG Strix G16 (2024)",
+                "price": 159990,
+                "features": [
+                    "Intel Core i9-14900HX",
+                    "NVIDIA RTX 4070 8GB",
+                    "16GB DDR5 RAM",
+                    "1TB PCIe 4.0 SSD",
+                    "16\" QHD+ 240Hz"
+                ],
+                "rating": 4.7,
                 "reviews": [
-                    "Great performance for gaming and work",
-                    "Good build quality and cooling",
-                    "Battery life could be better",
-                    "Keyboard is comfortable for long typing sessions",
-                    "Display is bright and color accurate"
+                    "Exceptional gaming performance",
+                    "Beautiful display with high refresh rate",
+                    "Great build quality",
+                    "Effective cooling system",
+                    "Premium features throughout"
                 ]
             },
             {
-                "name": "Lenovo IdeaPad Gaming 3",
-                "price": 49990,
-                "features": ["AMD Ryzen 5 5600H", "NVIDIA GTX 1650 4GB", "8GB RAM", "512GB SSD", "15.6\" FHD 120Hz"],
-                "rating": 4.3,
+                "name": "Lenovo Legion Pro 7i (2024)",
+                "price": 189990,
+                "features": [
+                    "Intel Core i9-14900HX",
+                    "NVIDIA RTX 4080 12GB",
+                    "32GB DDR5 RAM",
+                    "1TB PCIe 4.0 SSD",
+                    "16\" Mini LED 240Hz"
+                ],
+                "rating": 4.8,
                 "reviews": [
-                    "Good value for money",
-                    "Runs most games smoothly",
-                    "Build quality is decent",
-                    "Gets hot under heavy load",
-                    "Battery life is average"
+                    "Top-tier gaming performance",
+                    "Mini LED display is stunning",
+                    "Excellent build quality",
+                    "Great keyboard and trackpad",
+                    "Advanced cooling solution"
                 ]
             },
             {
-                "name": "HP Pavilion Gaming",
-                "price": 62990,
-                "features": ["Intel Core i5-11300H", "NVIDIA RTX 3050 Ti 4GB", "16GB RAM", "512GB SSD", "16.1\" FHD 144Hz"],
+                "name": "HP Omen 16 (2024)",
+                "price": 139990,
+                "features": [
+                    "AMD Ryzen 9 7940HS",
+                    "NVIDIA RTX 4060 8GB",
+                    "16GB DDR5 RAM",
+                    "1TB PCIe 4.0 SSD",
+                    "16\" QHD 165Hz"
+                ],
+                "rating": 4.6,
+                "reviews": [
+                    "Great value for performance",
+                    "Solid build quality",
+                    "Good battery life for a gaming laptop",
+                    "Effective cooling",
+                    "Nice display quality"
+                ]
+            },
+            {
+                "name": "MSI Katana 15 (2024)",
+                "price": 89990,
+                "features": [
+                    "Intel Core i7-13620H",
+                    "NVIDIA RTX 4050 6GB",
+                    "16GB DDR5 RAM",
+                    "512GB PCIe 4.0 SSD",
+                    "15.6\" FHD 144Hz"
+                ],
                 "rating": 4.4,
                 "reviews": [
-                    "Excellent performance for the price",
-                    "Good thermal management",
-                    "Premium build quality",
-                    "Battery life is decent",
-                    "Display is vibrant and responsive"
+                    "Good entry-level gaming performance",
+                    "Decent build quality",
+                    "144Hz display is smooth",
+                    "Good value for money",
+                    "Runs a bit warm under load"
                 ]
             },
             {
-                "name": "Acer Nitro 5",
-                "price": 47990,
-                "features": ["AMD Ryzen 5 5600H", "NVIDIA GTX 1650 4GB", "8GB RAM", "256GB SSD", "15.6\" FHD 144Hz"],
-                "rating": 4.2,
+                "name": "Acer Nitro V 15 (2024)",
+                "price": 69990,
+                "features": [
+                    "Intel Core i5-13420H",
+                    "NVIDIA RTX 3050 6GB",
+                    "16GB DDR5 RAM",
+                    "512GB PCIe SSD",
+                    "15.6\" FHD 144Hz"
+                ],
+                "rating": 4.3,
                 "reviews": [
-                    "Budget-friendly gaming laptop",
-                    "Good performance for casual gaming",
-                    "Build quality is acceptable",
-                    "Battery life is below average",
-                    "Display is decent but not great"
+                    "Great budget gaming laptop",
+                    "Good performance for the price",
+                    "Decent display",
+                    "Adequate cooling",
+                    "Value for money"
+                ]
+            },
+            {
+                "name": "Dell G15 Gaming (2024)",
+                "price": 74990,
+                "features": [
+                    "AMD Ryzen 5 7535HS",
+                    "NVIDIA RTX 3050 6GB",
+                    "16GB DDR5 RAM",
+                    "512GB PCIe SSD",
+                    "15.6\" FHD 120Hz"
+                ],
+                "rating": 4.4,
+                "reviews": [
+                    "Reliable performance",
+                    "Good build quality",
+                    "Decent battery life",
+                    "Effective cooling system",
+                    "Good value proposition"
                 ]
             }
         ]
@@ -231,23 +310,623 @@ class ProductAnalyzer:
         filtered_watches = [watch for watch in smartwatches if min_price <= watch["price"] <= max_price]
         return filtered_watches
     
+    def _get_smartphone_data(self, min_price, max_price):
+        smartphones = [
+            {
+                "name": "iPhone 15 Pro Max",
+                "price": 159900,
+                "features": ["A17 Pro chip", "6.7-inch Super Retina XDR display", "48MP Main + 12MP Ultra Wide + 12MP Telephoto", "Titanium design", "USB-C"],
+                "rating": 4.8,
+                "reviews": [
+                    "Best iPhone camera system yet",
+                    "Titanium build feels premium",
+                    "Excellent performance",
+                    "Great battery life",
+                    "USB-C is a welcome addition"
+                ]
+            },
+            {
+                "name": "Samsung Galaxy S24 Ultra",
+                "price": 129999,
+                "features": ["Snapdragon 8 Gen 3", "6.8-inch QHD+ Dynamic AMOLED", "200MP Main + 12MP Ultra + Dual Telephoto", "Titanium frame", "AI features"],
+                "rating": 4.7,
+                "reviews": [
+                    "Excellent camera system",
+                    "Galaxy AI features are useful",
+                    "S Pen functionality is great",
+                    "Premium build quality",
+                    "Impressive battery life"
+                ]
+            },
+            {
+                "name": "OnePlus 12",
+                "price": 64999,
+                "features": ["Snapdragon 8 Gen 3", "6.82-inch LTPO AMOLED", "50MP Main + 48MP Ultra + 64MP Telephoto", "100W charging", "Hasselblad cameras"],
+                "rating": 4.6,
+                "reviews": [
+                    "Excellent value flagship",
+                    "Super fast charging",
+                    "Great display quality",
+                    "Improved camera system",
+                    "Strong performance"
+                ]
+            },
+            {
+                "name": "Nothing Phone (2)",
+                "price": 44999,
+                "features": ["Snapdragon 8+ Gen 1", "6.7-inch LTPO OLED", "50MP Main + 50MP Ultra", "Glyph Interface", "Wireless charging"],
+                "rating": 4.4,
+                "reviews": [
+                    "Unique design with Glyph",
+                    "Clean software experience",
+                    "Good camera performance",
+                    "Solid build quality",
+                    "Decent battery life"
+                ]
+            },
+            {
+                "name": "Pixel 8 Pro",
+                "price": 106999,
+                "features": ["Google Tensor G3", "6.7-inch Super Actua display", "50MP Main + 48MP Ultra + 48MP Telephoto", "AI features", "7 years updates"],
+                "rating": 4.7,
+                "reviews": [
+                    "Best camera experience",
+                    "AI features are impressive",
+                    "Clean Android experience",
+                    "Great display quality",
+                    "Long software support"
+                ]
+            },
+            {
+                "name": "Redmi Note 13 Pro+ 5G",
+                "price": 31999,
+                "features": ["Dimensity 7200 Ultra", "6.67-inch 1.5K AMOLED", "200MP Main camera", "120W charging", "IP68 rating"],
+                "rating": 4.3,
+                "reviews": [
+                    "Great value for money",
+                    "Premium build quality",
+                    "Fast charging is amazing",
+                    "Good camera performance",
+                    "MIUI has some bloatware"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_phones = [phone for phone in smartphones if min_price <= phone["price"] <= max_price]
+        return filtered_phones
+    
+    def _get_tv_data(self, min_price, max_price):
+        tvs = [
+            {
+                "name": "Samsung 65-inch Neo QLED QN90C",
+                "price": 189990,
+                "features": ["4K Neo QLED", "Mini LED Technology", "Neural Quantum Processor 4K", "Gaming Hub", "Object Tracking Sound+"],
+                "rating": 4.8,
+                "reviews": [
+                    "Exceptional picture quality",
+                    "Great for gaming with low latency",
+                    "Impressive brightness levels",
+                    "Good sound system",
+                    "Premium build quality"
+                ]
+            },
+            {
+                "name": "LG C3 65-inch OLED evo",
+                "price": 209990,
+                "features": ["4K OLED evo", "α9 AI Processor Gen6", "Dolby Vision IQ", "NVIDIA G-SYNC", "4 HDMI 2.1 ports"],
+                "rating": 4.9,
+                "reviews": [
+                    "Perfect blacks and contrast",
+                    "Excellent for gaming",
+                    "WebOS is smooth",
+                    "Great upscaling",
+                    "Best-in-class picture quality"
+                ]
+            },
+            {
+                "name": "Sony Bravia XR X90L 65-inch",
+                "price": 159990,
+                "features": ["Full Array LED", "XR Cognitive Processor", "Google TV", "Acoustic Multi-Audio", "HDMI 2.1"],
+                "rating": 4.7,
+                "reviews": [
+                    "Natural picture quality",
+                    "Great motion handling",
+                    "Good for PS5 gaming",
+                    "Excellent upscaling",
+                    "Google TV works well"
+                ]
+            },
+            {
+                "name": "OnePlus 65-inch Q2 Pro",
+                "price": 99990,
+                "features": ["QLED Technology", "4K Resolution", "Google TV", "Dolby Vision & Atmos", "HDMI 2.1"],
+                "rating": 4.5,
+                "reviews": [
+                    "Great value for money",
+                    "Good picture quality",
+                    "Smooth performance",
+                    "Decent sound output",
+                    "Premium design"
+                ]
+            },
+            {
+                "name": "Hisense 65U7K QLED",
+                "price": 84990,
+                "features": ["QLED Technology", "144Hz Refresh Rate", "Full Array Local Dimming", "Dolby Vision IQ", "IMAX Enhanced"],
+                "rating": 4.4,
+                "reviews": [
+                    "Excellent value proposition",
+                    "Good gaming features",
+                    "Bright HDR performance",
+                    "Decent sound quality",
+                    "Feature-rich for the price"
+                ]
+            },
+            {
+                "name": "TCL 65-inch QLED C645",
+                "price": 69990,
+                "features": ["4K QLED", "Google TV", "Dolby Vision", "HDMI 2.1", "Game Master 2.0"],
+                "rating": 4.3,
+                "reviews": [
+                    "Great budget option",
+                    "Good picture quality",
+                    "Gaming features work well",
+                    "Value for money",
+                    "Google TV is smooth"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_tvs = [tv for tv in tvs if min_price <= tv["price"] <= max_price]
+        return filtered_tvs
+    
+    def _get_refrigerator_data(self, min_price, max_price):
+        refrigerators = [
+            {
+                "name": "LG 687L French Door Refrigerator",
+                "price": 129990,
+                "features": [
+                    "Linear Inverter Compressor",
+                    "Door-in-Door",
+                    "Smart Diagnosis",
+                    "Fresh Air Filter",
+                    "Smart Connect"
+                ],
+                "rating": 4.8,
+                "reviews": [
+                    "Spacious and well-organized",
+                    "Excellent cooling performance",
+                    "Smart features are useful",
+                    "Premium build quality",
+                    "Energy efficient"
+                ]
+            },
+            {
+                "name": "Samsung 638L French Door Refrigerator",
+                "price": 119990,
+                "features": [
+                    "Digital Inverter Technology",
+                    "Twin Cooling Plus",
+                    "Power Cool",
+                    "LED Lighting",
+                    "Frost Free"
+                ],
+                "rating": 4.7,
+                "reviews": [
+                    "Great storage space",
+                    "Efficient cooling",
+                    "Good organization",
+                    "Quiet operation",
+                    "Premium features"
+                ]
+            },
+            {
+                "name": "Whirlpool 340L Frost Free Double Door",
+                "price": 32990,
+                "features": [
+                    "6th Sense Technology",
+                    "IntelliSense Inverter",
+                    "Microblock Technology",
+                    "Stabilizer Free Operation",
+                    "Frost Free"
+                ],
+                "rating": 4.5,
+                "reviews": [
+                    "Good value for money",
+                    "Reliable performance",
+                    "Spacious enough",
+                    "Easy to maintain",
+                    "Energy efficient"
+                ]
+            },
+            {
+                "name": "Haier 253L Frost Free Double Door",
+                "price": 24990,
+                "features": [
+                    "Cooling on Wheels",
+                    "Anti-Bacterial Gasket",
+                    "Stabilizer Free Operation",
+                    "Frost Free",
+                    "Energy Efficient"
+                ],
+                "rating": 4.4,
+                "reviews": [
+                    "Compact and efficient",
+                    "Good for small families",
+                    "Cools well",
+                    "Easy to maintain",
+                    "Affordable option"
+                ]
+            },
+            {
+                "name": "Godrej 236L Frost Free Double Door",
+                "price": 22990,
+                "features": [
+                    "Cool-Touch Technology",
+                    "Stabilizer Free Operation",
+                    "Frost Free",
+                    "Energy Efficient",
+                    "Spill-Proof Shelves"
+                ],
+                "rating": 4.3,
+                "reviews": [
+                    "Reliable brand",
+                    "Good basic features",
+                    "Value for money",
+                    "Easy to clean",
+                    "Suitable for Indian conditions"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_fridges = [fridge for fridge in refrigerators if min_price <= fridge["price"] <= max_price]
+        return filtered_fridges
+    
+    def _get_washing_machine_data(self, min_price, max_price):
+        washing_machines = [
+            {
+                "name": "LG 8kg Front Load",
+                "price": 45990,
+                "features": ["Inverter Direct Drive Motor", "Steam Function", "6 Motion DD", "Smart Diagnosis", "Child Lock"],
+                "rating": 4.6,
+                "reviews": [
+                    "Excellent washing performance",
+                    "Very quiet operation",
+                    "Steam function works well",
+                    "Energy efficient",
+                    "Premium price but worth it"
+                ]
+            },
+            {
+                "name": "Samsung 7kg Front Load",
+                "price": 39990,
+                "features": ["Digital Inverter Motor", "Ecobubble Technology", "AddWash Door", "Smart Check", "Child Lock"],
+                "rating": 4.5,
+                "reviews": [
+                    "Great washing results",
+                    "Quiet operation",
+                    "AddWash is convenient",
+                    "Good for large loads",
+                    "App connectivity is useful"
+                ]
+            },
+            {
+                "name": "Whirlpool 6.5kg Top Load",
+                "price": 24990,
+                "features": ["Power Clean Technology", "ZPF Technology", "Aqua Energie", "Magic Filter", "Child Lock"],
+                "rating": 4.3,
+                "reviews": [
+                    "Good value for money",
+                    "Cleans clothes well",
+                    "Easy to use",
+                    "Durable build",
+                    "Suitable for Indian conditions"
+                ]
+            },
+            {
+                "name": "IFB 6.5kg Front Load",
+                "price": 32990,
+                "features": ["Aqua Energie", "Built-in Heater", "16 Programs", "Child Lock", "Delay End"],
+                "rating": 4.4,
+                "reviews": [
+                    "Good washing performance",
+                    "Built-in heater is useful",
+                    "Multiple programs",
+                    "Water efficient",
+                    "After-sales service is good"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_machines = [machine for machine in washing_machines if min_price <= machine["price"] <= max_price]
+        return filtered_machines
+    
+    def _get_camera_data(self, min_price, max_price):
+        cameras = [
+            {
+                "name": "Canon EOS 250D",
+                "price": 49990,
+                "features": ["24.1MP APS-C Sensor", "4K Video Recording", "Dual Pixel CMOS AF", "Vari-angle Touch Screen", "Wi-Fi & Bluetooth"],
+                "rating": 4.6,
+                "reviews": [
+                    "Great for beginners",
+                    "Good image quality",
+                    "Touch screen is responsive",
+                    "Lightweight and portable",
+                    "Battery life is decent"
+                ]
+            },
+            {
+                "name": "Nikon D3500",
+                "price": 39990,
+                "features": ["24.2MP DX Sensor", "1080p Video Recording", "11-point AF System", "Guide Mode", "Long Battery Life"],
+                "rating": 4.5,
+                "reviews": [
+                    "Excellent for learning photography",
+                    "Good image quality",
+                    "Easy to use",
+                    "Durable build",
+                    "Great battery life"
+                ]
+            },
+            {
+                "name": "Sony Alpha A7 III",
+                "price": 149990,
+                "features": ["24.2MP Full-Frame Sensor", "4K Video Recording", "5-axis Stabilization", "Fast AF", "Weather Sealed"],
+                "rating": 4.8,
+                "reviews": [
+                    "Professional-grade camera",
+                    "Excellent low-light performance",
+                    "Great video capabilities",
+                    "Robust build quality",
+                    "Expensive but worth it"
+                ]
+            },
+            {
+                "name": "Fujifilm X-T30",
+                "price": 69990,
+                "features": ["26.1MP APS-C Sensor", "4K Video Recording", "Fast AF", "Compact Design", "Film Simulation Modes"],
+                "rating": 4.7,
+                "reviews": [
+                    "Great image quality",
+                    "Compact and portable",
+                    "Film simulations are excellent",
+                    "Good for both photos and videos",
+                    "Battery life could be better"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_cameras = [camera for camera in cameras if min_price <= camera["price"] <= max_price]
+        return filtered_cameras
+    
+    def _get_tablet_data(self, min_price, max_price):
+        tablets = [
+            {
+                "name": "iPad Pro 12.9-inch (2024)",
+                "price": 119900,
+                "features": [
+                    "M2 chip",
+                    "12.9-inch Liquid Retina XDR display",
+                    "ProMotion & True Tone",
+                    "12MP Wide + 10MP Ultra Wide cameras",
+                    "Face ID"
+                ],
+                "rating": 4.9,
+                "reviews": [
+                    "Incredible performance",
+                    "Best tablet display ever",
+                    "Great for creative work",
+                    "Premium build quality",
+                    "Excellent for productivity"
+                ]
+            },
+            {
+                "name": "Samsung Galaxy Tab S9 Ultra",
+                "price": 108999,
+                "features": [
+                    "Snapdragon 8 Gen 2",
+                    "14.6-inch Dynamic AMOLED 2X",
+                    "S Pen included",
+                    "12MP + 12MP Dual front cameras",
+                    "IP68 water resistance"
+                ],
+                "rating": 4.8,
+                "reviews": [
+                    "Massive beautiful display",
+                    "Great for multitasking",
+                    "S Pen works perfectly",
+                    "Good battery life",
+                    "Premium Android tablet"
+                ]
+            },
+            {
+                "name": "iPad Air (5th gen)",
+                "price": 59900,
+                "features": [
+                    "M1 chip",
+                    "10.9-inch Liquid Retina display",
+                    "Touch ID",
+                    "12MP Ultra Wide front camera",
+                    "USB-C"
+                ],
+                "rating": 4.7,
+                "reviews": [
+                    "Great performance",
+                    "Perfect size for most users",
+                    "Good value for money",
+                    "Nice display quality",
+                    "Versatile device"
+                ]
+            },
+            {
+                "name": "Xiaomi Pad 6 Pro",
+                "price": 29999,
+                "features": [
+                    "Snapdragon 8+ Gen 1",
+                    "11-inch 144Hz LCD",
+                    "8600mAh battery",
+                    "13MP rear camera",
+                    "Quad speakers"
+                ],
+                "rating": 4.5,
+                "reviews": [
+                    "Great value tablet",
+                    "Smooth performance",
+                    "Good display quality",
+                    "Long battery life",
+                    "MIUI optimized well"
+                ]
+            },
+            {
+                "name": "OnePlus Pad",
+                "price": 37999,
+                "features": [
+                    "Dimensity 9000",
+                    "11.61-inch 144Hz LCD",
+                    "9510mAh battery",
+                    "67W SUPERVOOC charging",
+                    "Dolby Vision"
+                ],
+                "rating": 4.4,
+                "reviews": [
+                    "Premium build quality",
+                    "Great performance",
+                    "Good battery life",
+                    "Nice display",
+                    "Clean software"
+                ]
+            },
+            {
+                "name": "realme Pad 2",
+                "price": 19999,
+                "features": [
+                    "MediaTek Helio G99",
+                    "11-inch 2K display",
+                    "8360mAh battery",
+                    "Quad speakers",
+                    "33W fast charging"
+                ],
+                "rating": 4.3,
+                "reviews": [
+                    "Good budget tablet",
+                    "Nice display for price",
+                    "Decent performance",
+                    "Good battery life",
+                    "Value for money"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_tablets = [tablet for tablet in tablets if min_price <= tablet["price"] <= max_price]
+        return filtered_tablets
+    
+    def _get_printer_data(self, min_price, max_price):
+        printers = [
+            {
+                "name": "HP LaserJet Pro M428",
+                "price": 19990,
+                "features": ["Laser Printing", "20 PPM Print Speed", "1200 x 1200 dpi", "Automatic Duplex", "Wi-Fi Connectivity"],
+                "rating": 4.5,
+                "reviews": [
+                    "Fast printing speed",
+                    "Good print quality",
+                    "Reliable performance",
+                    "Easy to set up",
+                    "Toner lasts long"
+                ]
+            },
+            {
+                "name": "Canon PIXMA TS5370",
+                "price": 12990,
+                "features": ["Inkjet Printing", "Color Printing", "4800 x 1200 dpi", "Automatic Duplex", "Wi-Fi & Bluetooth"],
+                "rating": 4.3,
+                "reviews": [
+                    "Good for home use",
+                    "Color prints are vibrant",
+                    "Easy to use",
+                    "Ink can be expensive",
+                    "Wi-Fi setup is simple"
+                ]
+            },
+            {
+                "name": "Epson L3150",
+                "price": 15990,
+                "features": ["EcoTank Technology", "Color Printing", "5760 x 1440 dpi", "Automatic Duplex", "Wi-Fi Connectivity"],
+                "rating": 4.6,
+                "reviews": [
+                    "Very economical to run",
+                    "Good print quality",
+                    "Large ink capacity",
+                    "Initial cost is high",
+                    "Reliable performance"
+                ]
+            },
+            {
+                "name": "Brother DCP-T426W",
+                "price": 17990,
+                "features": ["Ink Tank System", "Color Printing", "1200 x 6000 dpi", "Automatic Duplex", "Wi-Fi & USB Connectivity"],
+                "rating": 4.4,
+                "reviews": [
+                    "Cost-effective printing",
+                    "Good for small office",
+                    "Easy to refill",
+                    "Print quality is good",
+                    "Setup is straightforward"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_printers = [printer for printer in printers if min_price <= printer["price"] <= max_price]
+        return filtered_printers
+    
     def _get_generic_data(self, category, min_price, max_price):
         # Generate generic product data based on the category
         products = []
         num_products = random.randint(3, 5)
         
+        # Common features for different product types
+        feature_templates = {
+            "kitchen": ["Durable construction", "Easy to clean", "Ergonomic design", "Heat resistant", "Space saving"],
+            "furniture": ["Sturdy build", "Modern design", "Easy assembly", "Space efficient", "Durable material"],
+            "clothing": ["Comfortable fit", "Durable fabric", "Easy to wash", "Stylish design", "Breathable material"],
+            "shoes": ["Comfortable fit", "Durable sole", "Breathable material", "Stylish design", "Good grip"],
+            "accessories": ["Durable material", "Stylish design", "Versatile use", "Good quality", "Value for money"],
+            "electronics": ["Energy efficient", "User-friendly interface", "Durable build", "Good performance", "Value for money"],
+            "beauty": ["Natural ingredients", "Effective results", "Suitable for all skin types", "Long-lasting", "Pleasant fragrance"],
+            "sports": ["Durable construction", "Comfortable fit", "Good performance", "Lightweight", "Easy to maintain"],
+            "books": ["Well-written", "Engaging content", "Good print quality", "Durable binding", "Value for money"],
+            "toys": ["Safe materials", "Educational value", "Durable construction", "Age appropriate", "Fun to play with"]
+        }
+        
+        # Determine product type based on category
+        product_type = "electronics"  # Default
+        for key in feature_templates:
+            if key in category.lower():
+                product_type = key
+                break
+        
+        # Get features for this product type
+        features = feature_templates.get(product_type, feature_templates["electronics"])
+        
         for i in range(num_products):
             price = random.randint(min_price, max_price)
             rating = round(random.uniform(3.5, 5.0), 1)
             
+            # Select random features
+            selected_features = random.sample(features, min(3, len(features)))
+            
             product = {
-                "name": f"Sample {category.title()} {i+1}",
+                "name": f"{category.title()} {i+1}",
                 "price": price,
-                "features": [
-                    f"Feature {j+1} for {category}",
-                    f"Feature {j+2} for {category}",
-                    f"Feature {j+3} for {category}"
-                ],
+                "features": selected_features,
                 "rating": rating,
                 "reviews": [
                     f"Good {category} for the price",
@@ -414,4 +1093,107 @@ class ProductAnalyzer:
         # Analyze with LLM
         analysis = self._analyze_with_llm(products)
         
-        return analysis.dict() 
+        return analysis.dict()
+
+    def _get_ac_data(self, min_price, max_price):
+        acs = [
+            {
+                "name": "LG 1.5 Ton 5 Star AI Dual Inverter Split AC",
+                "price": 44990,
+                "features": [
+                    "AI Convertible 6-in-1",
+                    "Dual Inverter Compressor",
+                    "Ocean Black Protection",
+                    "HD Filter with Anti-Virus",
+                    "Smart AC with IoT"
+                ],
+                "rating": 4.7,
+                "reviews": [
+                    "Excellent cooling performance",
+                    "Very energy efficient",
+                    "Smart features work well",
+                    "Quiet operation",
+                    "Premium build quality"
+                ]
+            },
+            {
+                "name": "Samsung 1.5 Ton 5 Star WindFree™ Split AC",
+                "price": 42990,
+                "features": [
+                    "WindFree™ Cooling",
+                    "Digital Inverter Technology",
+                    "Triple Protection Filter",
+                    "Auto Clean",
+                    "SmartThings App Control"
+                ],
+                "rating": 4.6,
+                "reviews": [
+                    "Gentle cooling is amazing",
+                    "Great energy savings",
+                    "Easy to maintain",
+                    "Good app integration",
+                    "Premium features"
+                ]
+            },
+            {
+                "name": "Daikin 1.5 Ton 5 Star Inverter Split AC",
+                "price": 39990,
+                "features": [
+                    "Coanda Airflow",
+                    "Inverter Technology",
+                    "PM 2.5 Filter",
+                    "Powerful Mode",
+                    "Auto Restart"
+                ],
+                "rating": 4.8,
+                "reviews": [
+                    "Best cooling performance",
+                    "Very reliable",
+                    "Energy efficient",
+                    "Easy to clean",
+                    "Worth the investment"
+                ]
+            },
+            {
+                "name": "Voltas 1.5 Ton 5 Star Inverter Split AC",
+                "price": 32990,
+                "features": [
+                    "iFeel Technology",
+                    "Inverter Compressor",
+                    "Anti-Dust Filter",
+                    "Sleep Mode",
+                    "Auto Restart"
+                ],
+                "rating": 4.4,
+                "reviews": [
+                    "Good value for money",
+                    "Efficient cooling",
+                    "Quiet operation",
+                    "Easy to install",
+                    "Reliable performance"
+                ]
+            },
+            {
+                "name": "Blue Star 1.5 Ton 5 Star Inverter Split AC",
+                "price": 34990,
+                "features": [
+                    "Flexi Cool Technology",
+                    "Inverter Compressor",
+                    "PM 2.5 Filter",
+                    "Sleep Mode",
+                    "Auto Restart"
+                ],
+                "rating": 4.5,
+                "reviews": [
+                    "Great cooling performance",
+                    "Energy efficient",
+                    "Good build quality",
+                    "Easy maintenance",
+                    "Value for money"
+                ]
+            }
+        ]
+        
+        # Filter by price range
+        filtered_acs = [ac for ac in acs if min_price <= ac["price"] <= max_price]
+        return filtered_acs 

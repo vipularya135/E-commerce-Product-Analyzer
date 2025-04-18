@@ -22,14 +22,6 @@ class AnalysisResult(BaseModel):
     price_range: Dict[str, float] = Field(description="Price range statistics")
     sentiment: Dict[str, Any] = Field(description="Sentiment analysis results")
 
-import os
-import time
-import random
-from typing import List, Dict
-from langchain.chat_models import ChatGroq
-from langchain.output_parsers import PydanticOutputParser
-from your_module import AnalysisResult  # Replace with your actual import if different
-
 class ProductAnalyzer:
     def __init__(self):
         self.llm = ChatGroq(
@@ -39,25 +31,26 @@ class ProductAnalyzer:
         self.output_parser = PydanticOutputParser(pydantic_object=AnalysisResult)
         
     def _scrape_products(self, platform: str, category: str, min_price: int, max_price: int) -> List[Dict]:
+        """
+        Scrape product information from the specified platform.
+        This is a placeholder implementation. In a real application, you would need to:
+        1. Handle different platforms' specific HTML structures
+        2. Implement proper rate limiting and error handling
+        3. Consider using official APIs if available
+        """
+        # Simulate network delay
         time.sleep(1)
         
+        # Generate sample data based on the category
         if "laptop" in category.lower() or "gaming" in category.lower():
             return self._get_laptop_data(min_price, max_price)
         elif "earbuds" in category.lower() or "headphone" in category.lower():
             return self._get_earbuds_data(min_price, max_price)
         elif "smartwatch" in category.lower() or "watch" in category.lower():
             return self._get_smartwatch_data(min_price, max_price)
-        elif "tv" in category.lower():
-            return self._get_tv_data(min_price, max_price)
-        elif "ac" in category.lower():
-            return self._get_ac_data(min_price, max_price)
-        elif "fridge" in category.lower() or "refrigerator" in category.lower():
-            return self._get_fridge_data(min_price, max_price)
-        elif "iphone" in category.lower():
-            return self._get_iphone_data(min_price, max_price)
         else:
             return self._get_generic_data(category, min_price, max_price)
-
+    
     def _get_laptop_data(self, min_price, max_price):
         laptops = [
             {
@@ -113,8 +106,11 @@ class ProductAnalyzer:
                 ]
             }
         ]
-        return [l for l in laptops if min_price <= l["price"] <= max_price]
-
+        
+        # Filter by price range
+        filtered_laptops = [laptop for laptop in laptops if min_price <= laptop["price"] <= max_price]
+        return filtered_laptops
+    
     def _get_earbuds_data(self, min_price, max_price):
         earbuds = [
             {
@@ -170,8 +166,11 @@ class ProductAnalyzer:
                 ]
             }
         ]
-        return [e for e in earbuds if min_price <= e["price"] <= max_price]
-
+        
+        # Filter by price range
+        filtered_earbuds = [earbud for earbud in earbuds if min_price <= earbud["price"] <= max_price]
+        return filtered_earbuds
+    
     def _get_smartwatch_data(self, min_price, max_price):
         smartwatches = [
             {
@@ -227,139 +226,20 @@ class ProductAnalyzer:
                 ]
             }
         ]
-        return [w for w in smartwatches if min_price <= w["price"] <= max_price]
-
-    def _get_tv_data(self, min_price, max_price):
-        tvs = [
-            {
-                "name": "Samsung Crystal 4K UHD TV",
-                "price": 35990,
-                "features": ["4K UHD", "Crystal Processor 4K", "Smart TV with Tizen", "HDR", "43 inch"],
-                "rating": 4.6,
-                "reviews": [
-                    "Excellent picture quality",
-                    "Smart features are intuitive",
-                    "Sound is decent",
-                    "Build quality is solid",
-                    "Value for money"
-                ]
-            },
-            {
-                "name": "Mi 5X 4K LED TV",
-                "price": 29999,
-                "features": ["4K LED", "Dolby Vision", "Android TV", "Google Assistant", "43 inch"],
-                "rating": 4.4,
-                "reviews": [
-                    "Great features at this price",
-                    "Crisp and clear display",
-                    "Sound could be better",
-                    "User interface is smooth",
-                    "Sleek and premium design"
-                ]
-            }
-        ]
-        return [tv for tv in tvs if min_price <= tv["price"] <= max_price]
-
-    def _get_ac_data(self, min_price, max_price):
-        acs = [
-            {
-                "name": "LG 1.5 Ton 5 Star Inverter AC",
-                "price": 43990,
-                "features": ["Dual Inverter", "Copper Condenser", "HD Filter", "Smart Diagnosis", "Energy Saving"],
-                "rating": 4.5,
-                "reviews": [
-                    "Cools quickly and efficiently",
-                    "Energy efficient",
-                    "Noise levels are low",
-                    "Remote is user-friendly",
-                    "Installation was smooth"
-                ]
-            },
-            {
-                "name": "Voltas 1.5 Ton 3 Star Split AC",
-                "price": 31990,
-                "features": ["Copper Condenser", "High Ambient Cooling", "Sleep Mode", "Anti-Dust Filter", "Remote Control"],
-                "rating": 4.2,
-                "reviews": [
-                    "Value for money",
-                    "Good cooling even in high temperatures",
-                    "Installation service could be improved",
-                    "Energy consumption is reasonable",
-                    "Looks stylish"
-                ]
-            }
-        ]
-        return [ac for ac in acs if min_price <= ac["price"] <= max_price]
-
-    def _get_fridge_data(self, min_price, max_price):
-        fridges = [
-            {
-                "name": "Samsung 253L 3 Star Refrigerator",
-                "price": 23990,
-                "features": ["Digital Inverter", "Convertible Freezer", "Toughened Glass Shelves", "Stabilizer Free", "Frost Free"],
-                "rating": 4.6,
-                "reviews": [
-                    "Spacious and energy efficient",
-                    "Runs silently",
-                    "Cooling is consistent",
-                    "Premium look and feel",
-                    "Convertible mode is handy"
-                ]
-            },
-            {
-                "name": "LG 260L 3 Star Refrigerator",
-                "price": 25990,
-                "features": ["Smart Inverter Compressor", "Moist Balance Crisper", "Door Cooling+", "Auto Smart Connect", "Frost Free"],
-                "rating": 4.5,
-                "reviews": [
-                    "Reliable brand with great features",
-                    "Cooling is fast",
-                    "Energy saving",
-                    "Good design and usability",
-                    "Build quality is top-notch"
-                ]
-            }
-        ]
-        return [fridge for fridge in fridges if min_price <= fridge["price"] <= max_price]
-
-    def _get_iphone_data(self, min_price, max_price):
-        iphones = [
-            {
-                "name": "Apple iPhone 14",
-                "price": 69999,
-                "features": ["6.1-inch Super Retina XDR Display", "A15 Bionic Chip", "Dual 12MP Cameras", "iOS 16", "Face ID"],
-                "rating": 4.8,
-                "reviews": [
-                    "Excellent performance and camera",
-                    "Battery lasts all day",
-                    "Build quality is premium",
-                    "iOS is smooth and responsive",
-                    "Pricey but worth it"
-                ]
-            },
-            {
-                "name": "Apple iPhone 13",
-                "price": 58999,
-                "features": ["6.1-inch Super Retina XDR Display", "A15 Bionic Chip", "Dual 12MP Cameras", "iOS 15", "MagSafe Support"],
-                "rating": 4.7,
-                "reviews": [
-                    "Still a great choice in 2025",
-                    "Very reliable and smooth",
-                    "Camera performs really well",
-                    "Good battery backup",
-                    "Solid build"
-                ]
-            }
-        ]
-        return [iphone for iphone in iphones if min_price <= iphone["price"] <= max_price]
-
+        
+        # Filter by price range
+        filtered_watches = [watch for watch in smartwatches if min_price <= watch["price"] <= max_price]
+        return filtered_watches
+    
     def _get_generic_data(self, category, min_price, max_price):
+        # Generate generic product data based on the category
         products = []
         num_products = random.randint(3, 5)
         
         for i in range(num_products):
             price = random.randint(min_price, max_price)
             rating = round(random.uniform(3.5, 5.0), 1)
+            
             product = {
                 "name": f"Sample {category.title()} {i+1}",
                 "price": price,
@@ -380,7 +260,6 @@ class ProductAnalyzer:
             products.append(product)
         
         return products
-
 
     def _analyze_with_llm(self, products: List[Dict]) -> AnalysisResult:
         """
